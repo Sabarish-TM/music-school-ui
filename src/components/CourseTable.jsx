@@ -171,21 +171,34 @@ const CourseTable = () => {
     pageSize: 5,
   });
 
-  const handleAddColumn = () => {
-    const newColumn = {
-      name: name,
-      description: desc,
-      instructor: inst,
-      instrument: personName,
-      day: day,
-      students: "34",
-      price: price,
-      status: "Active",
-    };
-    const updatedColumns = [...data, newColumn];
-    dispatch(setColumns(updatedColumns));
-    setOpen(false);
+const handleAddColumn = () => {
+  if (!name || !desc || !inst || !personName || !day || !price) {
+    window.alert("Please fill in all required fields.");
+    return;
+  }
+  const newColumn = {
+    name: name,
+    description: desc,
+    instructor: inst,
+    instrument: personName,
+    day: day,
+    students: "34",
+    price: price,
+    status: "Active",
   };
+  const updatedColumns = [...data, newColumn];
+  dispatch(setColumns(updatedColumns));
+  setOpen(false);
+
+  setName("");
+  setDesc("");
+  setInst("");
+  setPersonName("");
+  setDay("");
+  setPrice("");
+    window.alert("Course added sucessfully!");
+};
+
 
   const table = useMaterialReactTable({
     columns,
