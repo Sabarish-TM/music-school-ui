@@ -69,7 +69,7 @@ export default function SideBar() {
         <ListItem disablePadding onClick={() => navigate('/course')}>
           <StyledListItemButton>
             <ListItemIcon>
-              <QueueMusicIcon sx={{ fontSize: iconSize, mb: 2, ml: 1, mt: 1 }} />
+              <QueueMusicIcon sx={{ fontSize: iconSize, mb: 1, ml: 1, mt: 1 }} />
             </ListItemIcon>
             <StyledListItemText sx={{ fontSize: 15 }}>Course</StyledListItemText>
           </StyledListItemButton>
@@ -80,7 +80,7 @@ export default function SideBar() {
         <ListItem disablePadding onClick={handleLogout}>
           <StyledListItemButton>
             <ListItemIcon>
-              <LogoutIcon sx={{ fontSize: iconSize, mb: 2, ml: 1 }} />
+              <LogoutIcon sx={{ fontSize: iconSize, mb: 1, ml: 1 }} />
             </ListItemIcon>
             <StyledListItemText sx={{ fontSize: 15 }}>Logout</StyledListItemText>
           </StyledListItemButton>
