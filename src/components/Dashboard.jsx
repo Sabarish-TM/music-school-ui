@@ -74,7 +74,7 @@ const datas = [
     f_name:'John',
     l_name:'Doe',
     course: '3',
-    total_fee:'$300',
+    total_fee:'$250',
     date:'01-6-2023'
   },
   {
@@ -98,7 +98,7 @@ const Dashboard = () => {
       {
         accessorKey: "s_name",
         header: "S.Name",
-        size: 300,
+        size: 250,
       },
       {
         accessorKey: "c_name",
@@ -124,7 +124,7 @@ const Dashboard = () => {
       {
         accessorKey: "reg_no", 
         header: "Reg.No",
-        size: 300,
+        size: 250,
       },
       {
         accessorKey: "f_name",
@@ -134,7 +134,7 @@ const Dashboard = () => {
       {
         accessorKey: "l_name",
         header: "L.Name",
-        size: 300,
+        size: 200,
       },
       {
         accessorKey: "course",
