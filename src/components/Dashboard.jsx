@@ -44,12 +44,54 @@ const data = [
   },
 ];
 
+const datas = [
+  {
+    reg_no:'42522',
+    f_name:'John',
+    l_name:'Doe',
+    course: '3',
+    total_fee:'$300',
+    date:'01-6-2023'
+  },
+  {
+    reg_no:'42522',
+    f_name:'John',
+    l_name:'Doe',
+    course: '3',
+    total_fee:'$300',
+    date:'01-6-2023'
+  },
+  {
+    reg_no:'42522',
+    f_name:'John',
+    l_name:'Doe',
+    course: '3',
+    total_fee:'$300',
+    date:'01-6-2023'
+  },
+   {
+    reg_no:'42522',
+    f_name:'John',
+    l_name:'Doe',
+    course: '3',
+    total_fee:'$300',
+    date:'01-6-2023'
+  },
+  {
+    reg_no:'42522',
+    f_name:'John',
+    l_name:'Doe',
+    course: '3',
+    total_fee:'$300',
+    date:'01-6-2023'
+  },
+];
+
 const Dashboard = () => {
-  //should be memoized or stable
   const columns = useMemo(
     () => [
       {
-        accessorKey: "en_no", //access nested data with dot notation
+        accessorKey: "en_no", 
         header: "Enr.No",
         size: 300,
       },
@@ -77,8 +119,44 @@ const Dashboard = () => {
     [],
   );
 
+    const columnss = useMemo(
+    () => [
+      {
+        accessorKey: "reg_no", 
+        header: "Reg.No",
+        size: 300,
+      },
+      {
+        accessorKey: "f_name",
+        header: "F.Name",
+        size: 300,
+      },
+      {
+        accessorKey: "l_name",
+        header: "L.Name",
+        size: 300,
+      },
+      {
+        accessorKey: "course",
+        header: "Course #",
+        size: 300,
+      },
+         {
+        accessorKey: "total_fee",
+        header: "Total Fees #",
+        size: 210,
+      },
+      {
+        accessorKey: "date",
+        header: "Reg.Date",
+        size: 250,
+      },
+    ],
+    [],
+  );
+
   const table = useMaterialReactTable({
-         enableColumnActions:false,
+     enableColumnActions:false,
       enableBottomToolbar:false,
       enableGlobalFilter:false,
       enableDensityToggle:false,
@@ -86,8 +164,20 @@ const Dashboard = () => {
       enableColumnFilters:false,
       enablePagination:false,
       enableHiding:false,
-    columns,
-    data, //data must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
+      columns,
+      data, //data must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
+  });
+    const tables = useMaterialReactTable({
+     enableColumnActions:false,
+      enableBottomToolbar:false,
+      enableGlobalFilter:false,
+      enableDensityToggle:false,
+      enableFullScreenToggle:false,
+      enableColumnFilters:false,
+      enablePagination:false,
+      enableHiding:false,
+    columns:columnss,
+    data:datas,
   });
 
   return (
@@ -146,7 +236,7 @@ const Dashboard = () => {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <MaterialReactTable table={table} />
+        <MaterialReactTable table={tables} />
       </Grid>
     </Grid>
       
