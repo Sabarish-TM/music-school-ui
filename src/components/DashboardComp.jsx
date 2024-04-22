@@ -13,7 +13,7 @@ const Img = styled('img')({
   maxHeight: '100%',
 });
 
-export default function DashboardComp() {
+export default function DashboardComp({data1,data2}) {
   return (
     <Paper
       sx={{
@@ -33,10 +33,10 @@ export default function DashboardComp() {
           <Grid item xs container direction="column" spacing={2}>
             <Grid item>
               <Typography gutterBottom variant="subtitle1" component="div">
-                Flute
+                {data1}
               </Typography>
-              <Typography variant="body2" gutterBottom>
-                worst performance course
+              <Typography variant="body2" gutterBottom sx={{ color: '#8c918d', whiteSpace: 'nowrap' }}>
+               {data2}
               </Typography>
             </Grid>
           </Grid>
@@ -45,7 +45,7 @@ export default function DashboardComp() {
               variant="subtitle1"
               component="div"
               color="red"
-              sx={{ mt: 10 }}
+              sx={{ color: '#8c918d', whiteSpace: 'nowrap',mt: 10 }}
             >
               view
             </Typography>
