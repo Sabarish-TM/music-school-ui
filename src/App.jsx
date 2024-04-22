@@ -12,7 +12,6 @@ import CourseTable from "./components/CourseTable";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import Dashboard from "./components/Dashboard";
-import Test from "./components/Test";
 
 function App() {
   return (
@@ -34,14 +33,6 @@ function App() {
             element={
               <Layout>
                 <CourseTable />
-              </Layout>
-            }
-          />
-          <Route
-            path="/test"
-            element={
-              <Layout>
-                <Test />
               </Layout>
             }
           />
