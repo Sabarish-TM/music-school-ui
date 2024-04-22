@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   MaterialReactTable,
   useMaterialReactTable,
 } from "material-react-table";
-import { Box, Typography, Stack, Button } from "@mui/material";
+import { Box, Typography, Grid, Button, Stack, IconButton } from "@mui/material";
 import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -136,8 +136,9 @@ const CourseTable = () => {
             justifyContent="flex-start"
             alignItems="center"
             spacing={0.5}
-          >
-            <MoreVertIcon onClick={handleClick} />
+          ><IconButton onClick={handleClick} disabled={row?.original?.status ==='Closed'?true:false}>
+            <MoreVertIcon  />
+            </IconButton>
             <Menu
               id="basic-menu"
               anchorEl={anchorEl}
@@ -159,15 +160,16 @@ const CourseTable = () => {
 
   const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
   const handleClose = () => {
     setOpen(false);
     setPersonName("");
     setDay("");
   };
+
+  const [pagination, setPagination] = useState({
+    pageIndex: 0,
+    pageSize: 5,
+  });
 
   const handleAddColumn = () => {
     const newColumn = {
@@ -188,28 +190,36 @@ const CourseTable = () => {
   const table = useMaterialReactTable({
     columns,
     data,
-    renderTopToolbarCustomActions: ({ table }) => (
-      <Box
-        sx={{ display: "flex", gap: "16px", padding: "8px", flexWrap: "wrap" }}
-      >
-        <Button onClick={() => setOpen(true)}> + Add Course </Button>
-      </Box>
-    ),
+    onPaginationChange: setPagination,
+    state: { pagination },
+    enableColumnActions:false,
+      enableDensityToggle:false,
+      enableFullScreenToggle:false,
+      enableColumnFilters:false,
+      enableHiding:false,
+        positionGlobalFilter: 'right', //show the global filter on the left side of the top toolbar
+  initialState: {
+    showGlobalFilter: true, //show the global filter by default
+  },
   });
 
   return (
-    <Stack
-      direction="column"
-      justifyContent="center"
-      alignItems="center"
-      spacing={1}
-    >
-      <Typography variant="h5" component="h5">
-        Courses List
-      </Typography>
-      <Stack width={"95%"} height={"95%"}>
-        <MaterialReactTable table={table} />
-      </Stack>
+    <>
+      <Grid container spacing={2} sx={{ width: '95%', ml: '2%' }}>
+        <Grid item xs={12}>
+          <Typography variant="h4" sx={{ color: '#8c918d', whiteSpace: 'nowrap' }}>
+            Courses
+          </Typography>
+        </Grid>
+        <Grid item xs={12} >
+          <Typography variant="h6" sx={{ color: '#8c918d', whiteSpace: 'nowrap', mt: 2, ml: 0.2 }}>
+            COURSE LIST
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <MaterialReactTable table={table}  />
+        </Grid>
+      </Grid>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add Course</DialogTitle>
         <DialogContent>
@@ -309,7 +319,30 @@ const CourseTable = () => {
           </Button>
         </DialogActions>
       </Dialog>
-    </Stack>
+      <Box
+        sx={{
+          position: "fixed",
+          bottom: "16px",
+          right: "50px",
+          zIndex: 9999,
+        }}
+      >
+        <Button
+  variant="contained"
+  onClick={() => setOpen(true)}
+  color="primary"
+  sx={{
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+    bgcolor: '#4caf50',
+    '&:hover': {
+      bgcolor: '#388e3c',
+    },
+  }}
+>
+  + ADD COURSE
+</Button>
+      </Box>
+    </>
   );
 };
 
