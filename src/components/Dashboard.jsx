@@ -102,19 +102,19 @@ const Dashboard = () => {
         
         <Grid container spacing={2} sx={{width:'95%',ml:'2%',mt:'1%',mb:'2%'}}>
   <Grid item xs>
-    <DashboardComp/>
+    <DashboardComp data1={'164'} data2={'total number of students'}/>
   </Grid>
   <Grid item xs>
-    <DashboardComp/>
+    <DashboardComp data1={'12'} data2={'total number of courses'}/>
   </Grid>
   <Grid item xs>
-    <DashboardComp/>
+    <DashboardComp data1={'$2000'} data2={'total amount earned'}/>
   </Grid>
   <Grid item xs>
-    <DashboardComp/>
+    <DashboardComp data1={'Guitar'} data2={'best performing course'}/>
   </Grid>
   <Grid item xs>
-   <DashboardComp/>
+   <DashboardComp data1={'Flute'} data2={'worst performing course'}/>
   </Grid>
  
 </Grid>
