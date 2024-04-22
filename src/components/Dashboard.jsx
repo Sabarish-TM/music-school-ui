@@ -165,7 +165,7 @@ const Dashboard = () => {
     enablePagination: false,
     enableHiding: false,
     columns,
-    data, //data must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
+    data,
   });
   const tables = useMaterialReactTable({
     enableColumnActions: false,

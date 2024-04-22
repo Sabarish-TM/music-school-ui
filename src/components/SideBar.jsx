@@ -50,7 +50,7 @@ export default function SideBar() {
     <Drawer variant="permanent">
       <Divider />
       <List>
-        <ListItem disablePadding onClick={() => navigate('/')}>
+        <ListItem disablePadding onClick={() => navigate('/dashboard')}>
           <StyledListItemButton>
             <ListItemIcon>
               <HomeIcon sx={{ fontSize: 35, mb: 2, ml: 1 }} />
